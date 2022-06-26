@@ -24,7 +24,7 @@ const Header = (props) => {
 
           <img className={classes.svgIcons} src={homeSVG} alt="home Icon" />
         </div>
-        <HeaderCartButton />
+        <HeaderCartButton onClick={props.showCartHandler} />
       </header>
       <div className={classes["main-image"]}>
         <img src={mealsImage} alt="a table full of meals" />

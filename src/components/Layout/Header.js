@@ -9,7 +9,7 @@ const Header = (props) => {
   return (
     <React.Fragment>
       <header className={classes.header}>
-        <div className={classes.appLogo} onClick={() => {}}>
+        <div className={classes.appLogo}>
           <img
             className={classes.svgIcons}
             src={foodSVG}

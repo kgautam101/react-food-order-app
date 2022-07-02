@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
+import ThemeContext from "../../Context/themeContext";
 import AvailableMeals from "./AvailableMeals";
 import MealsSummary from "./MealsSummary";
 const Meals = () => {
+  const { isDarkMode } = useContext(ThemeContext);
   return (
-    <React.Fragment>
+    <div style={{ backgroundColor: isDarkMode ? "#073042" : "white" }}>
       <MealsSummary />
       <AvailableMeals />
-    </React.Fragment>
+    </div>
   );
 };
 export default Meals;

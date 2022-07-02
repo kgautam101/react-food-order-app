@@ -1,7 +1,9 @@
-import { useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
+import ThemeContext from "../../../Context/themeContext";
 import Input from "../../UI/Input";
 import classes from "./MealItemForm.module.css";
 const MealItemForm = (props) => {
+  const { isDarkMode } = useContext(ThemeContext);
   const [amountIsValid, setAmountIsValid] = useState(true);
   const inputAmountRef = useRef();
   const submitHandler = (event) => {
@@ -32,7 +34,14 @@ const MealItemForm = (props) => {
           defaultValue: "1",
         }}
       />
-      <button>+ Add</button>
+      <button
+        style={{
+          backgroundColor: isDarkMode ? "#29A19C" : null,
+          borderColor: isDarkMode ? "A3F7BF" : null,
+        }}
+      >
+        + Add
+      </button>
       {!amountIsValid && <p>Please enter a valid amount between 1 and 5.</p>}
     </form>
   );

@@ -31,6 +31,9 @@
   width: 2rem;
   stroke: aqua;
 }
+.darkModeTheme{
+  transform: rotate(180deg);
+}
 
 .main-image {
   width: 100%;

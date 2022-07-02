@@ -1,14 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
 import ReactDOM from "react-dom";
+import ThemeContext from "../../Context/themeContext";
 import classes from "./Modal.module.css";
 
 const Backdrop = (props) => {
   return <div className={classes.backdrop} onClick={props.onClose}></div>;
 };
 const ModalOverlay = (props) => {
+  const { isDarkMode } = useContext(ThemeContext);
   return (
-    <div className={classes.modal}>
-      <div className={classes.content}>{props.children}</div>
+    <div className={isDarkMode ? classes.modalDarkTheme : classes.modal}>
+      <div
+        className={classes.content}
+        style={{ color: isDarkMode ? "#efe2ba" : null }}
+      >
+        {props.children}
+      </div>
     </div>
   );
 };

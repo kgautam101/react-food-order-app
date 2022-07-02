@@ -3,6 +3,7 @@ import Cart from "./components/Cart/Cart";
 import Header from "./components/Layout/Header";
 import Meals from "./components/Meals/Meals";
 import CartProvider from "./Context/CartProvider";
+import ThemeProvider from "./Context/ThemeProvider";
 function App() {
   const [isShowCart, setIsShowCart] = useState(false);
   const showCartHandler = () => {
@@ -13,11 +14,13 @@ function App() {
   };
   return (
     <CartProvider>
-      {isShowCart && <Cart onClose={hideCartHandler} />}
-      <Header showCartHandler={showCartHandler} />
-      <main>
-        <Meals />
-      </main>
+      <ThemeProvider>
+        {isShowCart && <Cart onClose={hideCartHandler} />}
+        <Header showCartHandler={showCartHandler} />
+        <main>
+          <Meals />
+        </main>
+      </ThemeProvider>
     </CartProvider>
   );
 }

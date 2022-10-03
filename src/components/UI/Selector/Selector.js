@@ -3,23 +3,23 @@ import DownCheveron from "./DownCheveron";
 import classes from "./Selector.module.css";
 const Selector = (props) => {
   const { title, values } = props;
-  const [value, setValue] = useState("None");
+  const [value, setValue] = useState(values[0]?.businessname);
   const [isExpanded, setIsExpanded] = useState(false);
   const selectorClick = () => {
     setIsExpanded(!isExpanded);
   };
-  console.log("KG>>><<<values", values);
   const renderList = (values) => {
     return values.map((ele) => {
       return (
         <div
           className={classes.expansed_list}
+          key={ele?.id}
           onClick={() => {
-            setValue(ele.businessname);
+            setValue(ele?.businessname);
             setIsExpanded(false);
           }}
         >
-          {ele.businessname}
+          {ele?.businessname}
         </div>
       );
     });
@@ -33,7 +33,12 @@ const Selector = (props) => {
         style={{ backgroundColor: isExpanded ? "#FFFFFF" : null }}
       >
         <div>{value}</div>
-        <div>
+        <div
+          style={{
+            transform: isExpanded ? "rotate(180deg)" : "",
+            transition: "transform 190ms ease",
+          }}
+        >
           <DownCheveron />
         </div>
       </div>

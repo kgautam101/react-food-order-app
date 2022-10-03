@@ -10,7 +10,7 @@ const DownCheveron = () => {
       <path
         d="M1.5 1.5L5.5 5.5L9.5 1.5"
         stroke="#2E3156"
-        stroke-linecap="square"
+        strokeLinecap="square"
       />
     </svg>
   );

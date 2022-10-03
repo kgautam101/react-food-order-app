@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useContext } from "react";
+import { RestaurantContext } from "./RestaurantsContext";
 
 const useRestaurantsListAPICalls = () => {
-  const [restaurantsList, setRestaurantsList] = useState([]);
+  const { setRestaurantsList } = useContext(RestaurantContext);
 
   var requestOptions = {
     method: "GET",
@@ -14,11 +15,11 @@ const useRestaurantsListAPICalls = () => {
         requestOptions
       );
       const result = await list.json();
-      setRestaurantsList(result.Result);
+      setRestaurantsList(result?.Result);
     } catch (error) {
       console.error(error);
     }
   }
-  return { restaurantsList, getRestaurantList };
+  return { getRestaurantList };
 };
 export default useRestaurantsListAPICalls;

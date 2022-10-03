@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
+import themeChangerIcon from "../../assets/dark-theme-svgrepo-com.svg";
+import foodSVG from "../../assets/fast-food-svgrepo-com.svg";
+import homeSVG from "../../assets/home-svgrepo-com.svg";
 import mealsImage from "../../assets/meals.jpg";
+import ThemeContext from "../../Context/themeContext";
 import classes from "./Header.module.css";
 import HeaderCartButton from "./HeaderCartButton";
-import homeSVG from "../../assets/home-svgrepo-com.svg";
-import foodSVG from "../../assets/fast-food-svgrepo-com.svg";
-import themeChangerIcon from "../../assets/dark-theme-svgrepo-com.svg";
-import ThemeContext from "../../Context/themeContext";
 
 const Header = (props) => {
   const { isDarkMode, themeChangeHandler } = useContext(ThemeContext);
@@ -32,7 +32,9 @@ const Header = (props) => {
         >
           <img src={themeChangerIcon} alt="theme icon" />
         </div>
-        <HeaderCartButton onClick={props.showCartHandler} />
+        <div>
+          <HeaderCartButton onClick={props.showCartHandler} />
+        </div>
       </header>
       <div className={classes["main-image"]}>
         <img src={mealsImage} alt="a table full of meals" />

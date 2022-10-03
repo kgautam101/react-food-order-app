@@ -22,6 +22,7 @@
   color: #5d5f7e;
   font-size: 14px;
   font-weight: 500;
+  position: relative;
 }
 
 .expanded_list {
@@ -35,6 +36,10 @@
   color: #2e3156;
   font-size: 14px;
   font-weight: 500;
+  position: absolute;
+  z-index: 1;
+  max-height: 400px;
+  overflow-y: auto;
 }
 .expansed_list {
   border-bottom: 1px solid rgba(46, 49, 86, 0.2);

@@ -41,7 +41,7 @@ const AvailableMeals = () => {
   return (
     <Card>
       <Restaurants />
-      {/* <ul>{mealsList}</ul> */}
+      <ul>{mealsList}</ul>
     </Card>
   );
 };

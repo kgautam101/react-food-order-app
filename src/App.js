@@ -3,6 +3,7 @@ import Cart from "./components/Cart/Cart";
 import Header from "./components/Layout/Header";
 import Meals from "./components/Meals/Meals";
 import CartProvider from "./Context/CartProvider";
+import RestaurantProvider from "./Context/RestaurantProvider";
 import ThemeProvider from "./Context/ThemeProvider";
 function App() {
   const [isShowCart, setIsShowCart] = useState(false);
@@ -14,13 +15,15 @@ function App() {
   };
   return (
     <CartProvider>
-      <ThemeProvider>
-        {isShowCart && <Cart onClose={hideCartHandler} />}
-        <Header showCartHandler={showCartHandler} />
-        <main>
-          <Meals />
-        </main>
-      </ThemeProvider>
+      <RestaurantProvider>
+        <ThemeProvider>
+          {isShowCart && <Cart onClose={hideCartHandler} />}
+          <Header showCartHandler={showCartHandler} />
+          <main>
+            <Meals />
+          </main>
+        </ThemeProvider>
+      </RestaurantProvider>
     </CartProvider>
   );
 }

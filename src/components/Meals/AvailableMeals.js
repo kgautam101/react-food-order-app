@@ -1,5 +1,7 @@
 import Card from "../UI/Card";
 import MealItem from "./MealItem/MealItem";
+import Restaurants from "../Restaurants/Restaurants";
+
 const DUMMY_MEALS = [
   {
     id: "m1",
@@ -38,7 +40,8 @@ const AvailableMeals = () => {
   ));
   return (
     <Card>
-      <ul>{mealsList}</ul>
+      <Restaurants />
+      {/* <ul>{mealsList}</ul> */}
     </Card>
   );
 };

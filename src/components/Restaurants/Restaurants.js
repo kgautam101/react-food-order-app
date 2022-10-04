@@ -1,10 +1,11 @@
 import React, { useContext, useEffect } from "react";
-import { RestaurantContext } from "../../Context/RestaurantsContext";
+import RestaurantsContext from "../../Context/RestaurantsContext";
 import useRestaurantsListAPICalls from "../../Context/useRestaurantsListAPICalls";
+import Locations from "../UI/Locations/Locations";
 import Selector from "../UI/Selector/Selector";
 
 const Restaurants = () => {
-  const { restaurantsList } = useContext(RestaurantContext);
+  const { restaurantsList } = useContext(RestaurantsContext);
   const { getRestaurantList } = useRestaurantsListAPICalls();
   const customObject = {
     reviews: "",
@@ -29,6 +30,11 @@ const Restaurants = () => {
     getRestaurantList();
   }, []);
 
-  return <Selector title={"Restaurants"} values={values} />;
+  return (
+    <div>
+      <Locations title={"Search your location:"} />
+      <Selector title={"Restaurants"} values={values} />
+    </div>
+  );
 };
 export default Restaurants;

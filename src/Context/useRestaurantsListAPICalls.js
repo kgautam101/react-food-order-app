@@ -1,14 +1,30 @@
-import { useContext } from "react";
-import { RestaurantContext } from "./RestaurantsContext";
+import { useContext, useEffect } from "react";
+import RestaurantsContext from "./RestaurantsContext";
 
 const useRestaurantsListAPICalls = () => {
-  const { setRestaurantsList } = useContext(RestaurantContext);
+  const { setRestaurantsList, setGeoLocation, geoLocation } =
+    useContext(RestaurantsContext);
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition((position) => {
+      setGeoLocation(position.coords);
+    });
+  }, []);
+  useEffect(() => {
+    async function fetchRestaurants(lat, long) {
+      const list = await fetch(
+        `https://developers.zomato.com/api/v2.1/collections?lat=${geoLocation?.lat}&lon=${geoLocation?.long}&count=10`
+      );
+      const res = await list.json();
+      console.log("KG>>><<<res", res);
+    }
+    fetchRestaurants(geoLocation?.lat, geoLocation?.long);
+  }, []);
 
-  var requestOptions = {
-    method: "GET",
-    redirect: "follow",
-  };
   async function getRestaurantList() {
+    var requestOptions = {
+      method: "GET",
+      redirect: "follow",
+    };
     try {
       const list = await fetch(
         "https://foodbukka.herokuapp.com/api/v1/restaurant",

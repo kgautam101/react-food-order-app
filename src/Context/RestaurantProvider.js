@@ -1,13 +1,23 @@
 import { useState } from "react";
-import { RestaurantContext } from "./RestaurantsContext";
+import RestaurantsContext from "./RestaurantsContext";
 
 const RestaurantProvider = (props) => {
   const [restaurantsList, setRestaurantsList] = useState([]);
+  const [location, setLocation] = useState();
+  const [geoLocation, setGeoLocation] = useState({});
+  const RestaurantsContextState = {
+    restaurantsList: restaurantsList,
+    setRestaurantsList: setRestaurantsList,
+    location: location,
+    setLocation: setLocation,
+    geoLocation: geoLocation,
+    setGeoLocation: setGeoLocation,
+  };
 
   return (
-    <RestaurantContext.Provider value={{ restaurantsList, setRestaurantsList }}>
+    <RestaurantsContext.Provider value={RestaurantsContextState}>
       {props.children}
-    </RestaurantContext.Provider>
+    </RestaurantsContext.Provider>
   );
 };
 export default RestaurantProvider;

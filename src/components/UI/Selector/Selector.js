@@ -11,7 +11,7 @@ const Selector = (props) => {
   const renderList = (values) => {
     return values.map((ele) => {
       return (
-        <div
+        <li
           className={classes.expansed_list}
           key={ele?.id}
           onClick={() => {
@@ -20,7 +20,7 @@ const Selector = (props) => {
           }}
         >
           {ele?.businessname}
-        </div>
+        </li>
       );
     });
   };
@@ -43,7 +43,7 @@ const Selector = (props) => {
         </div>
       </div>
       {isExpanded && (
-        <div className={classes.expanded_list}>{renderList(values)}</div>
+        <ul className={classes.expanded_list}>{renderList(values)}</ul>
       )}
     </div>
   );

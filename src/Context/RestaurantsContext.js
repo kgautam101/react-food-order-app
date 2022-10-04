@@ -1,3 +1,4 @@
 import { createContext } from "react";
 
-export const RestaurantContext = createContext({});
+const RestaurantsContext = createContext({});
+export default RestaurantsContext;
